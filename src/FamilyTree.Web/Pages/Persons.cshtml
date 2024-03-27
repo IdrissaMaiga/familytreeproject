@@ -1,0 +1,221 @@
+﻿@page
+@inject OrchardCore.IOrchardHelper Orchard
+@using FamilyTree.Web
+@using System;
+@functions {
+    // Define supported image and video file extensions
+    private readonly string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+    private readonly string[] videoExtensions = { ".mp4", ".avi", ".mkv", ".mov" };
+
+    // Method to check if a given file path corresponds to an image
+    private bool IsImage(string filePath)
+    {
+        string extension = System.IO.Path.GetExtension(filePath);
+        return imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase);
+    }
+
+    // Method to check if a given file path corresponds to a video
+    private bool IsVideo(string filePath)
+    {
+        string extension = System.IO.Path.GetExtension(filePath);
+        return videoExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase);
+    }
+}
+
+<style>
+    .per{
+        border-radius:8%;
+        color:black;
+        background:yellow;
+        padding-left:80px;
+    }
+    .per1:hover{
+        color:blue;
+    }
+    .per1:active{
+        color:aqua;
+    }
+
+
+     body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color:black;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        p {
+            color:black;
+            line-height: 1.6;
+        }
+</style>
+    <script>
+
+          
+          
+             function scrollToElement(elementId) {
+    var element = document.getElementById(elementId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+       
+            
+    }
+}
+  let myva;
+         let mye;
+         let myva1; 
+          let myva2; 
+       
+
+             </script>
+<div class="container">
+    <h1>FamilyBook</h1>
+    <p>This book contains all the family members.</p>
+</div>
+<div class="FamilyTree">
+    @{
+        var family = await Orchard.GetContentItemByAliasAsync("alias:FamilyTree");
+        int i = 2;
+    }
+
+    @foreach (var person in family.Content.BagPart.ContentItems)
+    {
+      
+        var age = person.Person.DateOfBirth.Value.ToString();
+        var marage = person.Person.MariedSince.Value.ToString();
+        var name = person.DisplayText;
+        i+=1;
+        var momname = person.Person.Mother.Text;
+string GenerateColor(int i)
+{
+    string[] colorNames = {
+        "AliceBlue", "AntiqueWhite", "Aqua", "Beige", "Bisque",  "BlanchedAlmond"
+       , "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue",
+        "Cornsilk", "Crimson", "Cyan", "DarkCyan", "DarkGoldenrod", "DarkGray", "DarkGreen", "DarkKhaki",
+        "DarkMagenta", "DarkOliveGreen", "DarkOrange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue",
+        "DarkSlateGray", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DodgerBlue", "Firebrick",
+        "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "Goldenrod", "Gray", "Green", "GreenYellow",
+        "Honeydew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon",
+        "LightBlue", "LightCoral", "LightCyan", "LightGoldenrodYellow", "LightGray", "LightGreen", "LightPink", "LightSalmon",
+        "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta",
+        "Maroon", "MediumAquamarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen",
+        "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace",
+        "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenrod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip",
+        "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown",
+        "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal",
+        "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"
+    };
+
+    // Return the color name based on the index
+    return colorNames[i % colorNames.Length];
+}
+    // Convert RGB to integer values in range 0-255
+
+       
+
+        <div id="@(name)@(momname)_page2 div" class="per"  style="background-color: @(GenerateColor(i))"href="">
+           <a id="@(name)@(momname)_page2" style="color:black"><h2 class="per1" >@person.DisplayText</h2></a> 
+            <p><b>Gender: </b>@person.Person.Gender.Text</p>
+
+            <p><b>Age:</b> @(person.Person.DateOfBirth != null ? Functions.CalculateAge(age) : "Unknown")</p>
+
+
+
+            <p> <b>Autobiography:</b> @person.Person.Autobiography.Text</p>
+            <p> <b>Address:</b> @person.Person.Address.Text</p>
+            @if (person.Person.Husband.Text != "" && person.Person.Husband.Text != null)
+            {
+                <p> <b>Husband:</b> @person.Person.Husband.Text</p>
+            }
+            @if (person.Person.Wife.Text != "" && person.Person.Wife.Text != null)
+            {
+                <p> <b>Wife:</b> @person.Person.Wife.Text</p>
+            }
+            @if ((person.Person.Links.Text != "" && person.Person.Links.Text != null)  )
+            {
+                @foreach (var url in person.Person.Links.Text.ToString().Split(' '))
+                {
+                    <a href="@url" target="_blank">@url</a>
+                  
+                }
+
+        }
+            @if ((person.Person.Links.Url != "" && person.Person.Links.Url != null))
+            {
+                @foreach (var url in person.Person.Links.Url.ToString().Split(' '))
+                {
+                    <a href="@url" target="_blank">@url</a>
+                }
+               
+            }
+           
+          
+            @if (marage != "" && marage != null)
+            {
+                <p><b>Maried for:</b> @(person.Person.MariedSince != null ? Functions.CalculateAge(marage) : "Unknown") years since @(marage.Split(' ')[0])</p>
+            }
+            <p>
+                @if (person.HtmlBodyPart.Html != null)
+                {
+                    @Html.Raw(person.HtmlBodyPart.Html)
+                }
+            </p>
+            <p><b>Father:</b> @person.Person.Father.Text</p>
+            <p><b>Mother</b>: @person.Person.Mother.Text</p>
+
+            @if (person.Person.Galerie.Paths != null)
+              {
+                @if (person.Person.Galerie.Paths.Count > 0)
+                {
+                    <div>
+                        <h3>Gallery:</h3>
+                        @foreach (var mediaPath in person.Person.Galerie.Paths)
+                        {
+                            if (IsImage(mediaPath.ToString()))
+                            {
+                                <img src="~/Media/@mediaPath" alt="Image" width="240" height="240" style="border-radius: 5px;" />
+                            }
+                            else if (IsVideo(mediaPath.ToString()))
+                            {
+                                <video width="320" height="240" controls>
+                                    <source src="@mediaPath" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+                            else
+                            {
+                                <p>Unsupported media type</p>
+                            }
+                        }
+                    </div>
+                }
+            }
+           
+        </div>
+
+        <script>
+        
+          myva="@(name)@(momname)_page2";
+        myva1="@(name)@(momname) page1";
+        myva2="index#@(name)@(momname) page1";
+         mye=document.getElementById(myva);
+            
+          mye.setAttribute('href', myva2);
+           mye.addEventListener('click', ()=>{scrollToElement(myva1)});
+        </script>
+
+    }
+
+
+</div>
