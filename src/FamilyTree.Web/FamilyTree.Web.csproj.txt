@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -19,6 +19,10 @@
 	  <Watch Remove="Functions.cs" />
 	  <Watch Remove="PersonViewModel.cs" />
 	</ItemGroup>
+     <ItemGroup>
+  <Content Include="Pages\index.cshtml" />
+  <!-- Add more entries for other Razor pages as needed -->
+</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="OrchardCore.Logging.NLog" Version="1.8.2" />
