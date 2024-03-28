@@ -1,0 +1,60 @@
+﻿
+@inject OrchardCore.IOrchardHelper Orchard
+
+<!DOCTYPE html>
+<html lang="@Orchard.CultureName()" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>FamilyTree Project</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favi.ico" />
+    <!-- Font Awesome icons (free version)-->
+   
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .footer-content {
+            background-color: orange;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<script>
+     function scrollToElement(elementId) {
+        var element = document.getElementById(elementId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }</script>
+<body dir="@Orchard.CultureDir()" id="page-top" >
+ 
+  
+    
+   
+        @RenderBody()
+      
+    <!-- Bootstrap core JS-->
+   
+    <!-- Core theme JS-->
+    
+   
+    <footer>
+        <div class="footer-content">
+            <!-- Your footer content here -->
+            <p>&copy; @DateTime.Now.Year IdrissaLLc. All rights reserved.</p>
+            <p>This website has been develop with the help of Orchard CSMS.</p>
+        </div>
+    </footer>
+</body>
+
+
+</html>
