@@ -1,0 +1,1025 @@
+
+
+  {
+    "name": "CustomRazorLandingPage",
+    "displayName": "Custom Razor Landing Page",
+    "description": "Recipe for setting up a custom Razor landing page in Orchard CMS",
+    "author": "Idrissa Maiga",
+    "website": "",
+    "version": "1.0",
+     "issetuprecipe": true,
+  "categories": [],
+  "tags": [],
+    "steps": [
+      {
+        "name": "create-content-type",
+        "ContentTypes": [
+          {
+            "Name": "RazorPage",
+            "DisplayName": "Razor Page",
+            "Stereotype": "Widget",
+            "Parts": [
+              "TitlePart",
+              "HtmlBodyPart",
+              "AutoroutePart"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "create-razor-pages",
+        "ContentItems": [
+          {
+            "ContentType": "RazorPage",
+            "DisplayText": "About Us",
+            "TitlePart": {
+              "Title": "About Us"
+            },
+            "AutoroutePart": {
+              "Path": "/about-us"
+            },
+            "HtmlBodyPart": {
+              "Html": "<h1>About Us</h1><p>Welcome to our website!</p>"
+            }
+          },
+          {
+            "ContentType": "RazorPage",
+            "DisplayText": "Contact",
+            "TitlePart": {
+              "Title": "Contact"
+            },
+            "AutoroutePart": {
+              "Path": "/contact"
+            },
+            "HtmlBodyPart": {
+              "Html": "<h1>Contact Us</h1><p>Get in touch with us!</p>"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Settings",
+        "AdminSettings": {
+          "DisplayThemeToggler": true,
+          "DisplayMenuFilter": false,
+          "DisplayNewMenu": false,
+          "DisplayTitlesInTopbar": false
+        },
+        "LoginSettings": {
+          "UseSiteTheme": false,
+          "UseExternalProviderIfOnlyOneDefined": false,
+          "DisableLocalLogin": false,
+          "UseScriptToSyncRoles": false,
+          "SyncRolesScript": null,
+          "AllowChangingUsername": false,
+          "AllowChangingEmail": false,
+          "AllowChangingPhoneNumber": true
+        }
+      },
+      {
+        "name": "Feature",
+        "enable": [
+          "Application.Default",
+          "FamilyTree.Web",
+          "OrchardCore.Settings",
+          "OrchardCore.Admin",
+          "OrchardCore.Liquid",
+          "OrchardCore.Contents",
+          "OrchardCore.ContentTypes",
+          "OrchardCore.Shortcodes",
+          "OrchardCore.Html",
+          "OrchardCore.Recipes.Core",
+          "OrchardCore.Title",
+          "OrchardCore.Templates",
+          "OrchardCore.Alias",
+          "OrchardCore.Autoroute",
+          "OrchardCore.Scripting",
+          "OrchardCore.Recipes",
+          "OrchardCore.ContentFields",
+          "OrchardCore.Roles.Core",
+          "OrchardCore.Users",
+          "OrchardCore.ContentPreview",
+          "OrchardCore.Deployment",
+          "OrchardCore.CustomSettings",
+          "OrchardCore.Deployment.Remote",
+          "OrchardCore.Diagnostics",
+          "OrchardCore.DynamicCache",
+          "OrchardCore.Resources",
+          "OrchardCore.Widgets",
+          "OrchardCore.Features",
+          "OrchardCore.Flows",
+          "OrchardCore.HomeRoute",
+          "OrchardCore.Indexing",
+          "OrchardCore.Rules",
+          "OrchardCore.Layers",
+          "OrchardCore.Lists",
+          "OrchardCore.Markdown",
+          "OrchardCore.Media",
+          "OrchardCore.Menu",
+          "OrchardCore.Navigation",
+          "OrchardCore.Queries",
+          "OrchardCore.Roles",
+          "OrchardCore.Security",
+          "OrchardCore.Shortcodes.Templates",
+          "OrchardCore.Themes",
+          "TheAdmin"
+        ],
+        "disable": [
+          "FamilyModule",
+          "OrchardCore.AdminDashboard",
+          "OrchardCore.AdminMenu",
+          "OrchardCore.AdminTemplates",
+          "OrchardCore.Apis.GraphQL",
+          "OrchardCore.ArchiveLater",
+          "OrchardCore.AuditTrail",
+          "OrchardCore.Setup",
+          "OrchardCore.AutoSetup",
+          "OrchardCore.BackgroundTasks",
+          "OrchardCore.ContentFields.Indexing.SQL",
+          "OrchardCore.ContentFields.Indexing.SQL.UserPicker",
+          "OrchardCore.Localization",
+          "OrchardCore.ContentLocalization",
+          "OrchardCore.ContentLocalization.ContentCulturePicker",
+          "OrchardCore.Sitemaps",
+          "OrchardCore.ContentLocalization.Sitemaps",
+          "OrchardCore.Contents.Deployment.AddToDeploymentPlan",
+          "OrchardCore.Contents.Deployment.Download",
+          "OrchardCore.Contents.Deployment.ExportContentToDeploymentTarget",
+          "OrchardCore.Contents.FileContentDefinition",
+          "OrchardCore.Cors",
+          "OrchardCore.DataProtection.Azure",
+          "OrchardCore.Email",
+          "OrchardCore.Facebook",
+          "OrchardCore.Facebook.Login",
+          "OrchardCore.Facebook.Pixel",
+          "OrchardCore.Facebook.Widgets",
+          "OrchardCore.Feeds",
+          "OrchardCore.Forms",
+          "OrchardCore.GitHub.Authentication",
+          "OrchardCore.Google.Analytics",
+          "OrchardCore.Google.GoogleAuthentication",
+          "OrchardCore.Google.TagManager",
+          "OrchardCore.HealthChecks",
+          "OrchardCore.Https",
+          "OrchardCore.Localization.AdminCulturePicker",
+          "OrchardCore.Localization.ContentLanguageHeader",
+          "OrchardCore.Media.Cache",
+          "OrchardCore.Media.AmazonS3",
+          "OrchardCore.Media.Azure.Storage",
+          "OrchardCore.Media.Indexing",
+          "OrchardCore.Media.Slugify",
+          "OrchardCore.Microsoft.Authentication.AzureAD",
+          "OrchardCore.Microsoft.Authentication.MicrosoftAccount",
+          "OrchardCore.MiniProfiler",
+          "OrchardCore.Notifications",
+          "OrchardCore.Notifications.Email",
+          "OrchardCore.Sms",
+          "OrchardCore.Notifications.Sms",
+          "OrchardCore.OpenId",
+          "OrchardCore.OpenId.Client",
+          "OrchardCore.OpenId.Management",
+          "OrchardCore.OpenId.Server",
+          "OrchardCore.OpenId.Validation",
+          "OrchardCore.Placements",
+          "OrchardCore.Placements.FileStorage",
+          "OrchardCore.PublishLater",
+          "OrchardCore.Queries.Sql",
+          "OrchardCore.ReCaptcha",
+          "OrchardCore.ReCaptcha.Users",
+          "OrchardCore.Redis",
+          "OrchardCore.Redis.Bus",
+          "OrchardCore.Redis.Cache",
+          "OrchardCore.Redis.DataProtection",
+          "OrchardCore.Redis.Lock",
+          "OrchardCore.XmlRpc",
+          "OrchardCore.RemotePublishing",
+          "OrchardCore.ResponseCompression",
+          "OrchardCore.ReverseProxy",
+          "OrchardCore.Search",
+          "OrchardCore.Search.Elasticsearch",
+          "OrchardCore.Search.Elasticsearch.ContentPicker",
+          "OrchardCore.Search.Elasticsearch.Worker",
+          "OrchardCore.Search.Lucene",
+          "OrchardCore.Search.Lucene.ContentPicker",
+          "OrchardCore.Search.Lucene.Worker",
+          "OrchardCore.Seo",
+          "OrchardCore.Sitemaps.Cleanup",
+          "OrchardCore.Sitemaps.RazorPages",
+          "OrchardCore.Spatial",
+          "OrchardCore.Taxonomies",
+          "OrchardCore.Taxonomies.ContentsAdminList",
+          "OrchardCore.Tenants",
+          "OrchardCore.Tenants.Distributed",
+          "OrchardCore.Tenants.FeatureProfiles",
+          "OrchardCore.Tenants.FileProvider",
+          "OrchardCore.Twitter",
+          "OrchardCore.Twitter.Signin",
+          "OrchardCore.Users.2FA",
+          "OrchardCore.Users.2FA.AuthenticatorApp",
+          "OrchardCore.Users.2FA.Email",
+          "OrchardCore.Users.2FA.Sms",
+          "OrchardCore.Users.AuditTrail",
+          "OrchardCore.Users.Authentication.CacheTicketStore",
+          "OrchardCore.Users.ChangeEmail",
+          "OrchardCore.Users.CustomUserSettings",
+          "OrchardCore.Users.Registration",
+          "OrchardCore.Users.ResetPassword",
+          "OrchardCore.Users.TimeZone",
+          "OrchardCore.Workflows",
+          "OrchardCore.Workflows.Http",
+          "OrchardCore.Workflows.Session",
+          "OrchardCore.Workflows.Timers",
+          "SafeMode",
+          "TheAgencyTheme",
+          "TheBlogTheme",
+          "TheComingSoonTheme",
+          "TheTheme"
+        ]
+      },
+      {
+        "name": "Content",
+        "data": [
+          {
+            "ContentItemId": "[js: uuid()]",
+            "ContentType": "FamilyTree",
+            "DisplayText": null,
+            "Latest": true,
+            "Published": true,
+            "Owner": "[js: parameters('AdminUserId')]",
+            "Author": "[js: parameters('AdminUsername')]",
+            "FamilyTree": {},
+            "AliasPart": {
+              "Alias": "FamilyTree"
+            },
+            "BagPart": {
+              "ContentItems": [
+                {
+                  "ContentItemId": "44n68xjqr1ayr6rz8qdxfmh04n",
+                  "ContentItemVersionId": null,
+                  "ContentType": "Person",
+                  "DisplayText": "Dielika Maiga",
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2024-03-31T03:10:44.3464231Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+                  "Author": "admin2",
+                  "Person": {
+                    "DateOfBirth": {
+                      "Value": null
+                    },
+                    "Generation": {
+                      "Text": "I"
+                    },
+                    "Autobiography": {
+                      "Html": ""
+                    },
+                    "Mother": {
+                      "Text": null
+                    },
+                    "Father": {
+                      "Text": null
+                    },
+                    "Galerie": {
+                      "Paths": [
+                        "44CB6073-B8FE-49AF-A960-450C378288A8.jpg"
+                      ],
+                      "MediaTexts": [
+                        ""
+                      ]
+                    },
+                    "Gender": {
+                      "Text": "Female"
+                    },
+                    "MariedSince": {
+                      "Value": null
+                    },
+                    "Husband": {
+                      "Text": "Ibrahima Maiga"
+                    },
+                    "Wife": {
+                      "Text": null
+                    },
+                    "Address": {
+                      "Text": null
+                    },
+                    "Links": {
+                      "Url": null,
+                      "Text": null
+                    }
+                  },
+                  "AliasPart": {
+                    "Alias": "dielika-maiga"
+                  },
+                  "AutoroutePart": {
+                    "Path": "dielika-maiga",
+                    "SetHomepage": false,
+                    "Disabled": false,
+                    "RouteContainedItems": false,
+                    "Absolute": false
+                  },
+                  "HtmlBodyPart": {
+                    "Html": ""
+                  },
+                  "TitlePart": {
+                    "Title": "Dielika Maiga"
+                  }
+                },
+                {
+                  "ContentItemId": "4s2hrqfv4vac7689pj582d8nc6",
+                  "ContentItemVersionId": null,
+                  "ContentType": "Person",
+                  "DisplayText": "Ibrahima Maiga",
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2024-03-31T03:10:44.3609009Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+                  "Author": "admin2",
+                  "Person": {
+                    "DateOfBirth": {
+                      "Value": null
+                    },
+                    "Generation": {
+                      "Text": "I"
+                    },
+                    "Autobiography": {
+                      "Html": ""
+                    },
+                    "Mother": {
+                      "Text": null
+                    },
+                    "Father": {
+                      "Text": null
+                    },
+                    "Galerie": {
+                      "Paths": [],
+                      "MediaTexts": []
+                    },
+                    "Gender": {
+                      "Text": "Male"
+                    },
+                    "MariedSince": {
+                      "Value": null
+                    },
+                    "Husband": {
+                      "Text": null
+                    },
+                    "Wife": {
+                      "Text": "Dielika Maiga"
+                    },
+                    "Address": {
+                      "Text": null
+                    },
+                    "Links": {
+                      "Url": null,
+                      "Text": null
+                    }
+                  },
+                  "AliasPart": {
+                    "Alias": "ibrahima-maiga"
+                  },
+                  "AutoroutePart": {
+                    "Path": "ibrahima-maiga",
+                    "SetHomepage": false,
+                    "Disabled": false,
+                    "RouteContainedItems": false,
+                    "Absolute": false
+                  },
+                  "HtmlBodyPart": {
+                    "Html": ""
+                  },
+                  "TitlePart": {
+                    "Title": "Ibrahima Maiga"
+                  }
+                },
+                {
+                  "ContentItemId": "440p8a547tp50rqsftz9hpprcn",
+                  "ContentItemVersionId": null,
+                  "ContentType": "Person",
+                  "DisplayText": "Idrissa Maiga",
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2024-03-31T03:10:44.3759195Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+                  "Author": "admin2",
+                  "Person": {
+                    "DateOfBirth": {
+                      "Value": null
+                    },
+                    "Generation": {
+                      "Text": "II"
+                    },
+                    "Autobiography": {
+                      "Html": ""
+                    },
+                    "Mother": {
+                      "Text": "Dielika Maiga"
+                    },
+                    "Father": {
+                      "Text": "Ibrahima Maiga"
+                    },
+                    "Galerie": {
+                      "Paths": [],
+                      "MediaTexts": []
+                    },
+                    "Gender": {
+                      "Text": "Male"
+                    },
+                    "MariedSince": {
+                      "Value": null
+                    },
+                    "Husband": {
+                      "Text": null
+                    },
+                    "Wife": {
+                      "Text": null
+                    },
+                    "Address": {
+                      "Text": null
+                    },
+                    "Links": {
+                      "Url": null,
+                      "Text": null
+                    }
+                  },
+                  "AliasPart": {
+                    "Alias": "aissata-maiga"
+                  },
+                  "AutoroutePart": {
+                    "Path": "aissata-maiga",
+                    "SetHomepage": false,
+                    "Disabled": false,
+                    "RouteContainedItems": false,
+                    "Absolute": false
+                  },
+                  "HtmlBodyPart": {
+                    "Html": ""
+                  },
+                  "TitlePart": {
+                    "Title": "Idrissa Maiga"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "MediaProfiles",
+        "MediaProfiles": {}
+      },
+      {
+        "name": "Roles",
+        "Roles": [
+          {
+            "Name": "Administrator",
+            "Description": "Administrator",
+            "Permissions": [
+              "ManageShortcodeTemplates",
+              "ManageSettings",
+              "AccessAdminPanel",
+              "ManageAdminSettings",
+              "PublishContent",
+              "EditContent",
+              "DeleteContent",
+              "PreviewContent",
+              "CloneContent",
+              "AccessContentApi",
+              "ListContent",
+              "EditContentOwner",
+              "ViewContentTypes",
+              "EditContentTypes",
+              "ManageTemplates",
+              "ManageAdminTemplates",
+              "SetHomepage",
+              "ManageUsers",
+              "View Users",
+              "ManageOwnUserInformation",
+              "ListUsers",
+              "EditUsers",
+              "DeleteUsers",
+              "AssignRoleToUsers",
+              "Import",
+              "Export",
+              "ManageRemoteInstances",
+              "ManageRemoteClients",
+              "ExportRemoteInstances",
+              "ManageFeatures",
+              "ManageLayers",
+              "ManageMediaFolder",
+              "ManageMediaProfiles",
+              "ViewMediaOptions",
+              "ManageMenu",
+              "ManageQueries",
+              "ManageRoles",
+              "SiteOwner",
+              "ManageSecurityHeadersSettings",
+              "ApplyTheme"
+            ]
+          },
+          {
+            "Name": "Moderator",
+            "Description": "Moderator",
+            "Permissions": [
+              "AccessAdminPanel",
+              "ManageOwnUserInformation"
+            ]
+          },
+          {
+            "Name": "Editor",
+            "Description": "Editor",
+            "Permissions": [
+              "ManageShortcodeTemplates",
+              "AccessAdminPanel",
+              "PublishContent",
+              "EditContent",
+              "DeleteContent",
+              "PreviewContent",
+              "CloneContent",
+              "ListContent",
+              "ManageTemplates",
+              "ManageOwnUserInformation",
+              "ManageMediaContent",
+              "ManageOwnMediaContent",
+              "ManageQueries"
+            ]
+          },
+          {
+            "Name": "Author",
+            "Description": "Author",
+            "Permissions": [
+              "AccessAdminPanel",
+              "PublishOwnContent",
+              "EditOwnContent",
+              "DeleteOwnContent",
+              "PreviewOwnContent",
+              "CloneOwnContent",
+              "ManageOwnUserInformation",
+              "ManageOwnMediaContent"
+            ]
+          },
+          {
+            "Name": "Contributor",
+            "Description": "Contributor",
+            "Permissions": [
+              "AccessAdminPanel",
+              "EditOwnContent",
+              "PreviewOwnContent",
+              "CloneOwnContent",
+              "ManageOwnUserInformation",
+              "ManageOwnMediaContent"
+            ]
+          },
+          {
+            "Name": "Authenticated",
+            "Description": "Authenticated",
+            "Permissions": [
+              "ViewContent"
+            ]
+          },
+          {
+            "Name": "Anonymous",
+            "Description": "Anonymous",
+            "Permissions": [
+              "ViewContent"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Users",
+        "Users": [
+          {
+            "Id": 6,
+            "UserId": "444v2b6dr39wa4k2xch9yq7cwz",
+            "UserName": "admin2",
+            "Email": "admin2@gmail.com",
+            "PasswordHash": "AQAAAAIAAYagAAAAEFsB5UKnNO5ftXa3BHIpQnGOIJ4fbVoYlAvXlctBpPc+i2QeYaGUOLlgqm8zX2Fqzg==",
+            "EmailConfirmed": true,
+            "IsEnabled": true,
+            "NormalizedEmail": "ADMIN2@GMAIL.COM",
+            "NormalizedUserName": "ADMIN2",
+            "SecurityStamp": "GQ4PD4UJE35BFKMCM4Z2FDFRQ6DTGKJR",
+            "ResetToken": null,
+            "PhoneNumber": null,
+            "PhoneNumberConfirmed": false,
+            "TwoFactorEnabled": false,
+            "IsLockoutEnabled": true,
+            "AccessFailedCount": 0,
+            "RoleNames": [
+              "Administrator"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "media",
+        "Files": [
+          {
+            "SourcePath": "44CB6073-B8FE-49AF-A960-450C378288A8.jpg",
+            "TargetPath": "44CB6073-B8FE-49AF-A960-450C378288A8.jpg"
+          },
+          {
+            "SourcePath": "7F3FDCE3-C4A0-40EC-AD32-502329DF9243.jpg",
+            "TargetPath": "7F3FDCE3-C4A0-40EC-AD32-502329DF9243.jpg"
+          }
+        ]
+      },
+      {
+        "name": "custom-settings"
+      },
+      {
+        "name": "content",
+        "data": [
+          {
+            "ContentItemId": "4w7kg9ng98682rd1wm5rqfqp42",
+            "ContentItemVersionId": "4yzeqs4p6rd1z6xchdxe25m5c3",
+            "ContentType": "FamilyTree",
+            "DisplayText": null,
+            "Latest": true,
+            "Published": true,
+            "ModifiedUtc": "2024-03-31T03:10:44.3433369Z",
+            "PublishedUtc": "2024-03-31T03:10:44.4283668Z",
+            "CreatedUtc": "2024-03-31T02:48:06.5686838Z",
+            "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+            "Author": "admin2",
+            "FamilyTree": {},
+            "AliasPart": {
+              "Alias": "FamilyTree"
+            },
+            "BagPart": {
+              "ContentItems": [
+                {
+                  "ContentItemId": "44n68xjqr1ayr6rz8qdxfmh04n",
+                  "ContentItemVersionId": null,
+                  "ContentType": "Person",
+                  "DisplayText": "Dielika Maiga",
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2024-03-31T03:10:44.3464231Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+                  "Author": "admin2",
+                  "Person": {
+                    "DateOfBirth": {
+                      "Value": null
+                    },
+                    "Generation": {
+                      "Text": "I"
+                    },
+                    "Autobiography": {
+                      "Html": ""
+                    },
+                    "Mother": {
+                      "Text": null
+                    },
+                    "Father": {
+                      "Text": null
+                    },
+                    "Galerie": {
+                      "Paths": [
+                        "44CB6073-B8FE-49AF-A960-450C378288A8.jpg"
+                      ],
+                      "MediaTexts": [
+                        ""
+                      ]
+                    },
+                    "Gender": {
+                      "Text": "Female"
+                    },
+                    "MariedSince": {
+                      "Value": null
+                    },
+                    "Husband": {
+                      "Text": "Ibrahima Maiga"
+                    },
+                    "Wife": {
+                      "Text": null
+                    },
+                    "Address": {
+                      "Text": null
+                    },
+                    "Links": {
+                      "Url": null,
+                      "Text": null
+                    }
+                  },
+                  "AliasPart": {
+                    "Alias": "dielika-maiga"
+                  },
+                  "AutoroutePart": {
+                    "Path": "dielika-maiga",
+                    "SetHomepage": false,
+                    "Disabled": false,
+                    "RouteContainedItems": false,
+                    "Absolute": false
+                  },
+                  "HtmlBodyPart": {
+                    "Html": ""
+                  },
+                  "TitlePart": {
+                    "Title": "Dielika Maiga"
+                  }
+                },
+                {
+                  "ContentItemId": "4s2hrqfv4vac7689pj582d8nc6",
+                  "ContentItemVersionId": null,
+                  "ContentType": "Person",
+                  "DisplayText": "Ibrahima Maiga",
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2024-03-31T03:10:44.3609009Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+                  "Author": "admin2",
+                  "Person": {
+                    "DateOfBirth": {
+                      "Value": null
+                    },
+                    "Generation": {
+                      "Text": "I"
+                    },
+                    "Autobiography": {
+                      "Html": ""
+                    },
+                    "Mother": {
+                      "Text": null
+                    },
+                    "Father": {
+                      "Text": null
+                    },
+                    "Galerie": {
+                      "Paths": [],
+                      "MediaTexts": []
+                    },
+                    "Gender": {
+                      "Text": "Male"
+                    },
+                    "MariedSince": {
+                      "Value": null
+                    },
+                    "Husband": {
+                      "Text": null
+                    },
+                    "Wife": {
+                      "Text": "Dielika Maiga"
+                    },
+                    "Address": {
+                      "Text": null
+                    },
+                    "Links": {
+                      "Url": null,
+                      "Text": null
+                    }
+                  },
+                  "AliasPart": {
+                    "Alias": "ibrahima-maiga"
+                  },
+                  "AutoroutePart": {
+                    "Path": "ibrahima-maiga",
+                    "SetHomepage": false,
+                    "Disabled": false,
+                    "RouteContainedItems": false,
+                    "Absolute": false
+                  },
+                  "HtmlBodyPart": {
+                    "Html": ""
+                  },
+                  "TitlePart": {
+                    "Title": "Ibrahima Maiga"
+                  }
+                },
+                {
+                  "ContentItemId": "440p8a547tp50rqsftz9hpprcn",
+                  "ContentItemVersionId": null,
+                  "ContentType": "Person",
+                  "DisplayText": "Idrissa Maiga",
+                  "Latest": false,
+                  "Published": false,
+                  "ModifiedUtc": "2024-03-31T03:10:44.3759195Z",
+                  "PublishedUtc": null,
+                  "CreatedUtc": null,
+                  "Owner": "444v2b6dr39wa4k2xch9yq7cwz",
+                  "Author": "admin2",
+                  "Person": {
+                    "DateOfBirth": {
+                      "Value": null
+                    },
+                    "Generation": {
+                      "Text": "II"
+                    },
+                    "Autobiography": {
+                      "Html": ""
+                    },
+                    "Mother": {
+                      "Text": "Dielika Maiga"
+                    },
+                    "Father": {
+                      "Text": "Ibrahima Maiga"
+                    },
+                    "Galerie": {
+                      "Paths": [],
+                      "MediaTexts": []
+                    },
+                    "Gender": {
+                      "Text": "Male"
+                    },
+                    "MariedSince": {
+                      "Value": null
+                    },
+                    "Husband": {
+                      "Text": null
+                    },
+                    "Wife": {
+                      "Text": null
+                    },
+                    "Address": {
+                      "Text": null
+                    },
+                    "Links": {
+                      "Url": null,
+                      "Text": null
+                    }
+                  },
+                  "AliasPart": {
+                    "Alias": "aissata-maiga"
+                  },
+                  "AutoroutePart": {
+                    "Path": "aissata-maiga",
+                    "SetHomepage": false,
+                    "Disabled": false,
+                    "RouteContainedItems": false,
+                    "Absolute": false
+                  },
+                  "HtmlBodyPart": {
+                    "Html": ""
+                  },
+                  "TitlePart": {
+                    "Title": "Idrissa Maiga"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+
+
+      {
+        "name": "deployment",
+        "Plans": [
+          {
+            "Name": "deploymytree",
+            "Steps": [
+              {
+                "Type": "AdminSettings_SiteSettingsPropertyDeploymentStep",
+                "Step": {
+                  "Id": "3c3d45cbddc24e47b0354148634e7269",
+                  "Name": "AdminSettings_SiteSettingsPropertyDeploymentStep"
+                }
+              },
+              {
+                "Type": "AllFeaturesDeploymentStep",
+                "Step": {
+                  "IgnoreDisabledFeatures": false,
+                  "Id": "c54555d3332e4f3d990faee131c30b38",
+                  "Name": "AllFeatures"
+                }
+              },
+              {
+                "Type": "AllContentDeploymentStep",
+                "Step": {
+                  "ExportAsSetupRecipe": true,
+                  "Id": "f8e36105133e48298ca1228788c8a342",
+                  "Name": "AllContent"
+                }
+              },
+              {
+                "Type": "AllMediaProfilesDeploymentStep",
+                "Step": {
+                  "Id": "19b4b52fc5e7498193a759845f402b92",
+                  "Name": "AllMediaProfiles"
+                }
+              },
+              {
+                "Type": "AllRolesDeploymentStep",
+                "Step": {
+                  "Id": "7d0467631ffe471392466ae6324dff11",
+                  "Name": "AllRoles"
+                }
+              },
+              {
+                "Type": "AllUsersDeploymentStep",
+                "Step": {
+                  "Id": "b716680fad944d1288a8e62ce8654f25",
+                  "Name": "AllUsers"
+                }
+              },
+              {
+                "Type": "LoginSettings_SiteSettingsPropertyDeploymentStep",
+                "Step": {
+                  "Id": "4400ec05e5a44a88bc88ce9a6aa93ac7",
+                  "Name": "LoginSettings_SiteSettingsPropertyDeploymentStep"
+                }
+              },
+              {
+                "Type": "MediaDeploymentStep",
+                "Step": {
+                  "IncludeAll": true,
+                  "FilePaths": [],
+                  "DirectoryPaths": [],
+                  "Id": "5c8aa2efa76249d294611ee6398cc683",
+                  "Name": "Media"
+                }
+              },
+              {
+                "Type": "CustomSettingsDeploymentStep",
+                "Step": {
+                  "IncludeAll": true,
+                  "SettingsTypeNames": [],
+                  "Id": "1c61dbce6b25405096fbb48614327680",
+                  "Name": "CustomSettings"
+                }
+              },
+              {
+                "Type": "ContentDeploymentStep",
+                "Step": {
+                  "ContentTypes": [
+                    "ContentMenuItem",
+                    "FamilyTree",
+                    "HtmlMenuItem",
+                    "LinkMenuItem",
+                    "Menu",
+                    "Person"
+                  ],
+                  "ExportAsSetupRecipe": false,
+                  "Id": "164cccaa1b024119afd9d9544c83c673",
+                  "Name": "ContentDeploymentStep"
+                }
+              },
+              {
+                "Type": "DeploymentPlanDeploymentStep",
+                "Step": {
+                  "IncludeAll": true,
+                  "DeploymentPlanNames": [],
+                  "Id": "4b9ba39536ee465e8ef7c3af428ddccd",
+                  "Name": "DeploymentPlan"
+                }
+              },
+              {
+                "Type": "SiteSettingsDeploymentStep",
+                "Step": {
+                  "Settings": [
+                    "BaseUrl",
+                    "Calendar",
+                    "MaxPagedCount",
+                    "MaxPageSize",
+                    "PageSize",
+                    "TimeZoneId",
+                    "ResourceDebugMode",
+                    "SiteName",
+                    "SiteSalt",
+                    "PageTitleFormat",
+                    "SuperUser",
+                    "UseCdn",
+                    "CdnBaseUrl",
+                    "HomeRoute",
+                    "AppendVersion",
+                    "CacheMode"
+                  ],
+                  "Id": "04e63f3a14914d2d8dca6dabc69a2bff",
+                  "Name": "SiteSettings"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Settings",
+        "BaseUrl": null,
+        "Calendar": null,
+        "MaxPagedCount": 0,
+        "MaxPageSize": 100,
+        "PageSize": 10,
+        "TimeZoneId": "Europe/Budapest",
+        "ResourceDebugMode": 0,
+        "SiteName": "FamilyTree",
+        "SiteSalt": "8a488bb43ba6445786dacb889aa2ba17",
+        "PageTitleFormat": "{% page_title Site.SiteName, position: \"after\", separator: \" - \" %}",
+        "SuperUser": "444v2b6dr39wa4k2xch9yq7cwz",
+        "UseCdn": false,
+        "CdnBaseUrl": null,
+        "HomeRoute": {},
+        "AppendVersion": true,
+        "CacheMode": 0
+      }
+    ]
+  }
