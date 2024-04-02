@@ -17,7 +17,8 @@
         public string? Wife { get; set; }
         public DateTime? MariedSince { get; set; }
         public string? Address { get; set; }
-        public string? Generation { get; set; }
+        public string? Color { get; set; }
+        public string Generation { get; set; }
         int Wifecount = 0;
         public int wifecount { get => Wifecount; set { Wifecount = value; } }
 

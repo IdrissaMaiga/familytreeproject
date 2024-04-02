@@ -7,10 +7,10 @@
     /* CSS styling for the family tree */
     svg {
         position: absolute;
-        z-index: 9999; /* Ensure the SVG appears on top of other elements */
-        position: absolute;
+        /* Ensure the SVG appears on top of other elements */
         top: 0;
         left: 0;
+         pointer-events: none;
     }
     :root {
         --element-size: 150px;
@@ -133,7 +133,7 @@
         var maxgeneration = 0;
         foreach (var menber in allFamilyMembers)
         {
-            generations.Add(Functions.RomanToInt(menber.Generation));
+          
             foreach (var menber2 in allFamilyMembers)
             {
                 if (menber.Name == menber2.Father || menber.Name == menber2.Mother)
@@ -166,7 +166,7 @@
                         if (menber.Wife.Contains(menber2.Name)&&(menber2.Husband.Contains(menber.Name)))
                         {
                             familyorederedbymarried.Add(menber2);
-                            allFamilyMembers.Remove(menber2);
+                            toberemoved.Add(menber2);
 
                         }
                     }
@@ -181,7 +181,7 @@
                                     if (menber3.Wife.Contains(menber2.Name) && (menber2.Husband.Contains(menber3.Name)))
                                     {
                                         familyorederedbymarried.Add(menber3);
-                                        allFamilyMembers.Remove(menber3);
+
                                         toberemoved.Add(menber3);
                                         wellform1(allFamilyMembers, menber3);
                                         break;
@@ -192,14 +192,14 @@
                         else
                         {
                             familyorederedbymarried.Add(menber2);
-                            allFamilyMembers.Remove(menber2);
+                            toberemoved.Add(menber2);
                             wellform1(allFamilyMembers, menber2);
                         }
 
 
                     }
                 }
-                allFamilyMembers.Remove(menber);
+                toberemoved.Add(menber);
 
             }
 
@@ -223,7 +223,7 @@
                         if (menber.Wife.Contains(menber2.Name)&&(menber2.Husband.Contains(menber.Name)))
                         {
                             familyorederedbymarried.Add(menber2);
-                            allFamilyMembers.Remove(menber2);
+                            toberemoved.Add(menber2);
 
                         }
                     }
@@ -238,7 +238,7 @@
                                     if (menber3.Wife.Contains(menber2.Name) && (menber2.Husband.Contains(menber3.Name)))
                                     {
                                         familyorederedbymarried.Add(menber3);
-                                        allFamilyMembers.Remove(menber3);
+
                                         toberemoved.Add(menber3);
                                         wellform1(allFamilyMembers, menber3);
                                         break;
@@ -249,36 +249,36 @@
                         else
                         {
                             familyorederedbymarried.Add(menber2);
-                            allFamilyMembers.Remove(menber2);
+                            toberemoved.Add(menber2);
                             wellform1(allFamilyMembers, menber2);
                         }
 
 
                     }
                 }
-                allFamilyMembers.Remove(menber);
+                toberemoved.Add(menber);
 
             }
-           
+
 
 
         }
-        
-            // If the current item is the one we want to remove, remove it and break the loop
-              foreach (var menber in toberemoved)
+
+        // If the current item is the one we want to remove, remove it and break the loop
+        foreach (var menber in toberemoved)
         {
-             for (int i = familyorederedbymarried.Count - 1; i >= 0; i--)
-             {
-                if (familyorederedbymarried[i] == menber)
+            for (int i = familyorederedbymarried.Count - 1; i >= 0; i--)
             {
-               familyorederedbymarried.RemoveAt(i);
-                break;
+                if (familyorederedbymarried[i] == menber)
+                {
+                    familyorederedbymarried.RemoveAt(i);
+                    break;
+                }
+
             }
-           
-              }
-           
+
         }
-       
+
         foreach (var menber in allFamilyMembers)
         {
             familyorederedbymarried.Add(menber);
@@ -303,16 +303,20 @@
                 }
             }
         }
+        foreach (var menber in familyorederedbymarried)
+        {
+            generations.Add(Functions.RomanToInt(menber.Generation));
+        }
         var biggestline = new List<int>();
         var generationsArray = generations.ToArray();
         int biggestLine = 0;
 
-        for (int i = 0; i < generationsArray.Length - 1; i++)
+        @for (int i = 0; i < generationsArray.Length ; i++)
         {
-            if (generationsArray[i] > generationsArray[i + 1])
-            { maxgeneration = generations[i]; }
-            else
-            { maxgeneration = generations[i + 1]; }
+            if( maxgeneration <= generationsArray[i])
+            { maxgeneration = generationsArray[i]; }
+           
+            
         }
         for (int i = 0; ((i < generationsArray.Length - 1) && (i < maxgeneration)); i++)
         {
@@ -327,8 +331,43 @@
             else
             { biggestLine = biggestline.ToArray()[i + 1]; }
         }
-      
-        // Function to recursively render family tree nodes
+        string GenerateColor(int i)
+        {
+            string[] colorNames = {
+    "AliceBlue", "AntiqueWhite", "Aqua", "Beige", "Bisque",  "BlanchedAlmond"
+    , "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue",
+    "Cornsilk", "Crimson", "Cyan", "DarkCyan", "DarkGoldenrod", "DarkGray", "DarkGreen", "DarkKhaki",
+    "DarkMagenta", "DarkOliveGreen", "DarkOrange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue",
+    "DarkSlateGray", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DodgerBlue", "Firebrick",
+    "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "Goldenrod", "Gray", "Green", "GreenYellow",
+    "Honeydew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon",
+    "LightBlue", "LightCoral", "LightCyan", "LightGoldenrodYellow", "LightGray", "LightGreen", "LightPink", "LightSalmon",
+    "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta",
+    "Maroon", "MediumAquamarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen",
+    "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace",
+    "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenrod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip",
+    "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown",
+    "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal",
+    "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"
+    };
+
+            // Return the color name based on the index
+            return colorNames[i % colorNames.Length];
+        }
+        int j = 0;
+        foreach (var menber in familyorederedbymarried)
+        {
+
+            if ((menber.Husband != null && menber.Husband != "") && menber.Gender == "Female")
+            {
+               menber.Color= GenerateColor(j);
+                j += 2;
+            }
+        }
+
+
+
+            // Function to recursively render family tree nodes
         void RenderFamilyTree(PersonViewModel person)
          {
             var age = person.DateOfBirth;
@@ -362,7 +401,12 @@
                                                         </div>
                                                     </a>
         }
-        
+
+        <div> @(familyorederedbymarried.Count) members</div>
+         
+        <div> @(generationsArray.Length) gencount</div>
+      
+
 
 
 
@@ -438,20 +482,19 @@
                             svg.setAttribute("width", "100%");
                             svg.setAttribute("height", "100%");
 
-                            svg.setAttribute("style", "position: absolute; top: 0; left: 0; pointer-events: none;");
+                            
 
                             var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                             path.setAttribute("id",pathid);
                             var startX = 0;
-                            startX = parentBox.right; 
-                            
+                            startX = parentBox.right -window.pageXOffset;
 
 
 
-                            var startY = parentBox.top + (parentBox.height / 2);
-                            var endX = parentBox1.left; 
+                            var startY = parentBox.top + (parentBox.height / 2) - window.pageYOffset;
+                            var endX = parentBox1.left - window.pageXOffset;
 
-                            var endY = parentBox1.top + (parentBox1.height / 2);
+                            var endY = parentBox1.top + (parentBox1.height / 2) -window.pageYOffset;
 
 
 
@@ -487,15 +530,15 @@
                                          var parentBox1 = parent.getBoundingClientRect();
 
                                           var startX = 0;
-                            startX = parentBox.right; 
+                            startX = parentBox.right- window.pageXOffset;
                             
 
 
 
-                            var startY = parentBox.top + (parentBox.height / 2);
-                            var endX = parentBox1.left; 
+                            var startY = parentBox.top + (parentBox.height / 2) -window.pageYOffset;
+                            var endX = parentBox1.left-window.pageXOffset;
 
-                            var endY = parentBox1.top + (parentBox1.height / 2);
+                            var endY = parentBox1.top + (parentBox1.height / 2) -window.pageYOffset;
 
 
 
@@ -539,60 +582,24 @@
 
                                         //drawing the svg
         @foreach (var familyMember in familyorederedbymarried)
-        {  <script> i=i+10;</script>
+        {  
             if ((familyMember.Children.Count>0)&&(familyMember.wifecount>0)&&familyMember.Gender=="Male")
             {
                                                         @foreach(var kid in familyMember.Children)
                 {
                     @for (int i = 1; i <familyMember.wifecount+1; i++) 
                     { 
-                        <script> j++;</script>
-
+                        
                         if(kid.Mother==familyMember.Together.ToArray()[i].Name)
                         {
-                            
+                           
                                                                <script>
                                                                   pathid ="@(familyMember.Together.ToArray()[i].Name)@(familyMember.Together.ToArray()[i].Mother)@kid.Name@kid.Mother";
                                                                    mother ="@(familyMember.Together.ToArray()[i].Name)@(familyMember.Together.ToArray()[i].Mother) page1";
                                                                     kid="@kid.Name@kid.Mother page1";
-                                                                    col=generateColor(i*j);
+                                                                    col = "@(familyMember.Together.ToArray()[i].Color)";
 
-                                                                    function generateColor(i) {
-                                                                // Calculate hue value based on the integer i
-                                                                let hue = (i * 137.508) % 360; // Golden angle approximation
-
-                                                                // Convert HSL color to RGB
-                                                                let h = hue / 360;
-                                                                let s = 0.7; // Saturation
-                                                                let l = 0.5; // Lightness
-                                                                let r, g, b;
-
-                                                                if (s === 0) {
-                                                                    r = g = b = l; // achromatic
-                                                                } else {
-                                                                    let hue2rgb = function hue2rgb(p, q, t) {
-                                                                        if (t < 0) t += 1;
-                                                                        if (t > 1) t -= 1;
-                                                                        if (t < 1 / 6) return p + (q - p) * 6 * t;
-                                                                        if (t < 1 / 2) return q;
-                                                                        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-                                                                        return p;
-                                                                    };
-
-                                                                    let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                                                                    let p = 2 * l - q;
-                                                                    r = hue2rgb(p, q, h + 1 / 3);
-                                                                    g = hue2rgb(p, q, h);
-                                                                    b = hue2rgb(p, q, h - 1 / 3);
-                                                                }
-
-                                                                // Convert RGB to hexadecimal
-                                                                r = Math.round(r * 255).toString(16).padStart(2, '0');
-                                                                g = Math.round(g * 255).toString(16).padStart(2, '0');
-                                                                b = Math.round(b * 255).toString(16).padStart(2, '0');
-
-                                                                return `#${r}${g}${b}`;
-                                                            }
+                                                                   
 
                                                         
 
@@ -607,17 +614,14 @@
                                                                         svg.setAttribute("width", "100%");
                                                                         svg.setAttribute("height", "100%");
                                                                        
-                                                                        svg.setAttribute("style", "position: absolute; top: 0; left: 0; pointer-events: none;");
-
+                                                                        
                                                                         var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                                                                         path.setAttribute("id", pathid);
-                                                                        var startX = parentBox.right - (parentBox.width)-10;
-                                                                       
-                                                    
-                                                                        var startY = parentBox.top + (parentBox.height / 2);
-                                                                        var endX = childBox.right - (childBox.width/2);
-                                                                        var endY = childBox.top ;
-                                                                        console.log(startX, "start ", startY);
+                                                                     var startX = parentBox.right - parentBox.width - 10 -  document.documentElement.scrollLeft;
+                                                                    var startY = parentBox.top + (parentBox.height / 2) -document.documentElement.scrollTop;
+                                                                    var endX = childBox.right - (childBox.width / 2) - document.documentElement.scrollLeft;
+                                                                    var endY = childBox.top - document.documentElement.scrollLeft;
+                                                                           console.log(startX, "start ", startY);
                                                                         console.log(endX, "end ", endY);
 
 
@@ -629,7 +633,7 @@
 
                                                                         path.setAttribute("d", pathData);
                                                                         path.setAttribute("fill", "none");
-                                                                        path.setAttribute("stroke", "black");
+                                                                        path.setAttribute("stroke", col);
                                                                         path.setAttribute("stroke-width", "2");
 
                                                                         svg.appendChild(path);
@@ -646,12 +650,10 @@
 
                                                                     var parentBox = parent.getBoundingClientRect();
                                                                     var childBox = child.getBoundingClientRect();
-                                                             var startX = parentBox.right - (parentBox.width)-10;
-
-
-                                                                var startY = parentBox.top + (parentBox.height / 2);
-                                                                var endX = childBox.right - (childBox.width/2);
-                                                                var endY = childBox.top ;
+                                                                    var startX = parentBox.right - parentBox.width - 10 -  document.documentElement.scrollLeft;
+                                                                    var startY = parentBox.top + (parentBox.height / 2) -document.documentElement.scrollTop;
+                                                                    var endX = childBox.right - (childBox.width / 2) - document.documentElement.scrollLeft;
+                                                                    var endY = childBox.top - document.documentElement.scrollLeft;
                                                                 console.log(startX, "start ", startY);
                                                                 console.log(endX, "end ", endY);
 
